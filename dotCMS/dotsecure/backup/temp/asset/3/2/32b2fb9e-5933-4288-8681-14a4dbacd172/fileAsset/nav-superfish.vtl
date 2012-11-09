@@ -1,0 +1,77 @@
+#macro (showTopNavigation $menuLevel $levelPath $level $menuSpans $firstItemClass $lastItemClass $menuIdPrefix)
+#set ($VTLSERVLET_DECODED_URI = "${UtilMethods.decodeURL($VTLSERVLET_URI)}")
+#if (($menuLevel.size() > 0) && ($UtilMethods.inString($VTLSERVLET_DECODED_URI, $levelPath) || ($UtilMethods.isSet($openAllLevels) && $openAllLevels == true)))
+
+	#if ($level == 1)
+		<ul class="sf-menu sf-js-enabled pull-right">
+	#else
+		<ul style="display: none; visibility: hidden;">
+	#end
+
+		#foreach ($menuItem in $menuLevel)
+			#if (!$UtilMethods.isSet($menuItem.linkType))
+				#set($menuItem.linkType = "")
+			#end
+			
+			#if (($menuItem.type == "LINK") && ($menuItem.linkType == "CODE"))
+				$menuItem.path
+			#else
+				#set ($li = "<li")
+				
+				#if ($menuItem.type == "LINK")
+					#set ($link = "${menuItem.protocal}${menuItem.name}")
+				#elseif ($menuItem.type == "FOLDER")
+					#set ($link = "${menuItem.path}")
+				#else
+					#set ($link = "${menuItem.path}$!{menuItem.name}")  
+				#end
+	
+				#set ($folderId = "")
+				#if ($menuItem.type == "FOLDER")
+					#set ($folderId = "${menuItem.name}")
+					#if ($UtilMethods.isSet($menuIdPrefix))
+						#set ($folderId = "${menuIdPrefix}_${folderId}")
+					#end
+					#set ($folderId = "id='${folderId}'")
+				#end
+	
+				#set ($target = "")
+				#if (($menuItem.type == "LINK") && $UtilMethods.isSet($menuItem.target))
+					#set ($target = "target='${menuItem.target}'")
+				#end
+	
+				#if ($menuItem.type == "LINK")
+					#set ($li = "${li} ${folderId}><a href='$!{link}' ${target}>")
+				#else
+					#set ($li = "${li} ${folderId}><a href='${UtilMethods.encodeURIComponent($link)}' ${target}>")
+				#end
+				
+				#set ($li = "${li} $menuItem.title</a>")
+				#if ($menuItem.type == "FOLDER")
+					$li
+					#showTopNavigation($menuItem.submenu $menuItem.path $math.add($level, 1) $menuSpans $firstItemClass $lastItemClass $menuIdPrefix)
+					</li>
+				#else
+					$li</li>
+				#end
+			#end
+		#end
+    </ul>
+	#end
+#end
+
+<div class="navbar">
+	<div class="navbar-inner">
+		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</a>
+		
+		<a class="logo" href="/"><img src="/images/template/logo.png" alt="Quest | dotCMS Starter Site"></a>
+		
+		<div class="nav-collapse collapse">
+			#showTopNavigation($navigationItems '/' 1 $menuSpans $firstItemClass $lastItemClass $menuIdPrefix)
+		</div>
+	</div>
+</div>

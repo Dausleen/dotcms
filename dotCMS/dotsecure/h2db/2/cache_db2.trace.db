@@ -1,0 +1,3 @@
+11-06 21:53:31 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "CONTENTLETCACHE" not found; SQL statement:
+SELECT CACHE_DATA FROM `contentletcache` WHERE CACHE_KEY=? [42102-169]

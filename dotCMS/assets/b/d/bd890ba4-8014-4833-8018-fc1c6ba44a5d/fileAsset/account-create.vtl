@@ -1,0 +1,161 @@
+#parse('static/messages.html')
+
+#set($session = $request.getSession())
+#set($createAccountForm = $request.getAttibute("createAccountForm"))
+#parse('/static/messages.html')
+
+
+<script languaje="javascript">
+	function submitForm(){
+		var fm = document.getElementById("createAccountForm");
+		fm.submit();
+	}
+	function cancel(){
+    	window.location = "/";
+	}
+</script>
+
+
+<style>
+	#createAccountForm div{margin:10px;position:relative;height:30px;}
+	#createAccountForm div input, #createAccountForm div select{position:absolute;left:110px;}
+</style>
+
+<form id="createAccountForm" action="/dotCMS/createAccount">
+<input type="hidden" name="dispatch" value="quickCreate">
+<input type="hidden" id="return" name="return" value="/application/createaccount/thank_you.html">
+
+	<div>
+		Email:
+		<input tabindex="4" type="text" name="emailAddress"  size="30" value="$!{createAccountForm.emailAddress}">
+	</div>
+	
+	<div>
+		Password:
+		<input tabindex="5" type="password" maxlength="20"  name="password1" value="$!{createAccountForm.password}">
+	</div>
+	
+	<div>
+		Verify Password:
+		<input tabindex="6" type="password" maxlength="20"  onchange="passFieldChanged()" name="verifyPassword" value="$!{createAccountForm.verifyPassword}">
+	</div>
+	
+	<div>
+		Prefix:
+		#set( $mr = "")
+		#set( $mrs = "")
+		#set( $miss = "")
+		#set( $dr = "")
+		#if($!{createAccountForm.prefix} == "mr")
+			#set( $mr = "selected")
+		#end
+		#if($!{createAccountForm.prefix} == "mrs")
+			#set( $mrs = "selected")
+		#end
+		#if($!{createAccountForm.prefix} == "miss")
+			#set( $miss = "selected")
+		#end
+		#if($!{createAccountForm.prefix} == "dr")
+			#set( $dr = "selected")
+		#end
+		<select tabindex="7" name="prefix" value="$!{createAccountForm.prefix}">
+			<option value="mr" $!{mr}>Mr.</option>
+			<option value="mrs" $!{mrs}>Mrs.</option>
+			<option value="miss" $!{miss}>Ms.</option>
+			<option value="dr" $!{dr}>Dr.</option>
+		</select>
+	</div>
+	
+	<div>
+		First Name:
+		<input tabindex="8" type="text" name="firstName" value="$!{createAccountForm.firstName}">
+	</div>
+	
+	<div>
+		Last Name:
+		<input tabindex="9" type="text" name="lastName" value="$!{createAccountForm.lastName}">
+	</div>
+	
+	<div>
+		Suffix:
+		<input tabindex="10" type="text" name="suffix" value="$!{createAccountForm.suffix}">
+	</div>
+	
+	<div>
+		Title:
+		<input tabindex="11" type="text" name="title" value="$!{createAccountForm.title}">
+	</div>
+	
+	<div style="padding:2px 5px;margin:40px 0 10px 0;background:#efefef;border:1px solid #ccc;">
+		<div style="display:inline-block;width:113px;font-weight:bold;margin:3px 0 3px 0;">This is my:</div>
+		#set( $work = "")
+		#set( $home = "")
+		#if($!{createAccountForm.description} == "work")
+			#set( $work = "checked")
+		#end
+		#if($!{createAccountForm.description} == "home")
+			#set( $home = "checked")
+		#end
+		<div style="display:inline-block;margin:3px 15px 3px 0;">
+			<input tabindex="19" style="position:relative;display:inline;left:auto;" type="radio" name="description" value="work" $!{work} id="descriptionWork" />
+			<label for="descriptionWork" style="position:relative;display:inline;left:auto;">Work Address</label>
+		</div>
+		<div style="display:inline-block;margin:3px 15px;">
+			<input tabindex="20" style="position:relative;display:inline;left:auto;" type="radio" name="description" value="home" $!{home} id="descriptionHome" />
+			<label for="descriptionHome" style="position:relative;display:inline;left:auto;">Home Address</label>
+		</div>
+	</div>
+	
+	<div>
+		Street1:
+		<input tabindex="21" type="text" name="street1" value="$!{createAccountForm.street1}">
+	</div>
+	
+	<div>
+		Street 2:
+		<input tabindex="22" type="text" name="street2" value="$!{createAccountForm.street2}">
+	</div>
+	
+	<div>
+		City:
+		<input tabindex="23" type="text" name="city" value="$!{createAccountForm.city}">
+	</div>
+	
+	<div>
+		State:
+		<input tabindex="23" type="text" name="state" value="$!{createAccountForm.state}">
+	</div>
+	
+	<div>
+		Country:
+		<input tabindex="23" type="text" name="country" value="$!{createAccountForm.country}">
+	</div>
+	
+	<div>
+		Zip:
+		<input tabindex="25" type="text"  name="zip" value="$!{createAccountForm.zip}">
+	</div>
+	
+	<div>
+		Phone:
+		<input tabindex="26" type="text"  name="phone" value="$!{createAccountForm.phone}">
+	</div>
+	
+	<div>
+		Fax:
+		<input tabindex="27" type="text"  name="fax" value="$!{createAccountForm.fax}">
+	</div>
+	
+	<!-- My Profile And Preferences -->
+	#if($UtilMethods.isSet($theCategories))
+		Please select the areas that interest you most.
+		$theCategories
+	#end
+	<!-- END My Profile And Preferences -->  
+  
+      
+
+	<input type="button" onclick="cancel();" value="Cancel" />  
+	<input type="button" onclick="submitForm();" value="Next Step" />
+
+</form>

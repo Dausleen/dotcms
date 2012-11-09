@@ -1,0 +1,24 @@
+<script>
+// Twitter
+	$(document).ready(function() {
+		if ($("#twitter").length) {
+			$("#twitter").tweet({
+				join_text: "auto",
+				username: "$!{account}",
+				avatar_size: 36,
+				count: $!{results},
+				auto_join_text_default: " we said, ",
+				auto_join_text_ed: " we ",
+				auto_join_text_ing: " we were ",
+				auto_join_text_reply: " we replied ",
+				auto_join_text_url: " we were checking out ",
+				loading_text: "loading tweets..."
+			});
+		}
+	});
+</script>
+
+#if($UtilMethods.isSet($title))
+	<h3>$!{title}</h3>
+#end
+<div id="twitter"></div>

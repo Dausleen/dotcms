@@ -1,0 +1,82 @@
+/*** NOTE: base.css is the only style sheet imported and used in the WYSIWYG editor ***/
+
+@font-face {
+    font-family: 'JosefinSlabSemiBold';
+    src: url('/css/fonts/JosefinSlab-SemiBold-webfont.eot');
+    src: url('/css/fonts/JosefinSlab-SemiBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/css/fonts/JosefinSlab-SemiBold-webfont.woff') format('woff'),
+         url('/css/fonts/JosefinSlab-SemiBold-webfont.ttf') format('truetype'),
+         url('/css/fonts/JosefinSlab-SemiBold-webfont.svg#JosefinSlabSemiBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {font-family:Arial, Helvetica, sans-serif;font-size:100%;color:#5d5d60;font-size:13px;margin:0;padding:0;}
+h1, h2, h3, h4, h5, h6 {margin:0 0 15px; line-height:1.2em; color:#4b4b5f;font-weight:normal;}
+h1 {font-size:34px;letter-spacing: 0;}
+h2 {font-size:22px;letter-spacing: -0.05em;margin:0 0 10px 0;color:#004276;font-weight:normal;}
+h3 {font-size:18px;letter-spacing: -0.03em;color:#004276;margin:0;} 
+h4 {font-size:18px;}   
+h5 {font-size:16px;}  
+h6 {font-size:14px;}
+h1 strong {font-size:60px;font-weight:normal;line-height:1.2em;}
+h1 em {font-style:normal;color:#23231c;font-size:48px;border-bottom:1px solid #ededed;display:block;padding-bottom:15px;line-height:1.2em;}
+strong, b, big {color:#191001;}
+a {color:#d54c20;outline:none;text-decoration:underline;}
+a:hover, a:focus {text-decoration:none;}
+p {margin-bottom:18px;}
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video{ display: block; }
+aside{position:relative;}
+mark, rp, rt, ruby, summary, time{ display: inline }
+
+hr{margin:20px 0;height:1px;border:0;border-top:1px solid #ccc;}
+
+ins {background-color:#e55729;color:#fff;padding:0 5px;text-decoration:none;}
+mark {background-color:#ff9;color:#000; font-style:italic;font-weight:bold;}
+del {text-decoration: line-through;}
+abbr[title], dfn[title] {cursor:help;}
+em, dfn {font-style:italic; color:#e55729;}
+dfn {font-size:14px; letter-spacing:2px;}
+sup, sub {font-size:0.8em;}
+sub {vertical-align:bottom;}
+abbr, acronym  { border-bottom:1px dotted #e55729; color:#e55729; text-transform:uppercase;}
+address { margin:0 0 1.5em;font-style:italic;}
+del { color:#666;}
+pre, code, tt  {font:1em 'andale mono', 'lucida console', monospace; line-height:1.5; display:block;}
+code { background-color:#f6f6f6; display:block; color:#333; padding:3px 2px 3px 5px; line-height:1.67em;  border:1px dotted #333;}
+pre { white-space:pre;}
+
+ul, ol {margin: 0 0 9px 0;}
+
+ol li {list-style-type:decimal;list-style-position:inside;font-weight:bold;background:none;padding:0 0 7px 0;color:#23231c;}
+ol li a{color:#e55729;font-weight:normal;text-decoration:none;}
+
+ul li {list-style-type:circle;list-style-position:outside;margin:0 0  10px 15px;}
+ul li a{color:#e55729;font-weight:normal;text-decoration:none;}
+
+blockquote {display:block;padding:20px 20px 0px 20px;line-height:165%;background:url(/images/template/quotes.png) 0px 3px no-repeat; margin-bottom:25px;quotes:none;font-style:italic; color:#847d78;}
+blockquote span{display:block;text-align:right;color:#e55729;padding:10px 10px 0 0;}
+
+/***  Table style ***/
+table{width:100%;margin-bottom:20px;}
+table th {padding:10px;font-size:14px;background:#999;padding:10px;font-weight:normal;color:#fff;border:1px solid #ccc;}
+table td {padding:10px;border-bottom:1px solid #ccc;}
+
+/***  Dropcaps style ***/
+.dropcap {font-size:38px;width:52px;color:#fff;background:#327daf;display:block;float:left;margin-right:5px;font-weight:normal;height:52px;text-align:center;line-height:52px;text-transform:uppercase;border-radius:26px;-moz-border-radius:26px;-webkit-border-radius:26px;}
+
+/***  Forms style ***/
+label{display:block;font-weight:bold;line-height:1.4;text-shadow: 0 1px 1px #fff;}
+input[type="text"], input[type="password"], select {width:175px;padding:5px 8px;margin:0;color:#666;border:1px solid #bbb;background-image: -webkit-gradient(linear, 0% 0%, 0% 30%, from(#ddd), to(#fff));background-image: -moz-linear-gradient(0 30% 90deg, #fff, #ddd);background-color:#fff;-webkit-border-radius: 3px;-moz-border-radius:3px;-o-border-radius:3px;border-radius:3px;}
+input[type="text"]:focus, input[type="password"]:focus {-webkit-box-shadow: 0 0 8px rgba(92, 159, 215, 0.9);-moz-box-shadow: 0 0 8px rgba(92, 159, 215, 0.9);box-shadow: 0 0 8px rgba(92, 159, 215, 0.9);}
+input[type="submit"], input[type="button"] {padding: 4px 15px;font-weight:bold;line-height:1;color:#444;border:1px solid #bbb;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#bbb));background-image: -moz-linear-gradient(0 100% 90deg, #bbb, #fff);background-color:#fff;-webkit-border-radius: 4px;-moz-border-radius: 4px;-o-border-radius: 4px;border-radius:  4px;}
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="button"]:hover,
+input[type="button"]:focus
+{
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#96c8ed), to(#4a92cd));
+	background-image: -moz-linear-gradient(0 100% 90deg, #4a92cd, #96c8ed);
+	border:1px solid #236091;
+}
